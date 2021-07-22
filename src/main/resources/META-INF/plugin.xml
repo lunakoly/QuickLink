@@ -6,6 +6,7 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.lunakoly.intellijquicklink.services.MyApplicationService"/>
@@ -16,4 +17,15 @@
         <listener class="com.github.lunakoly.intellijquicklink.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+    <actions>
+        <action id="com.github.lunakoly.intellijquicklink.actions.CopyLineLinkAction"
+                class="com.github.lunakoly.intellijquicklink.actions.CopyLineLinkAction" text="Copy Line Link"
+                description="Generates an URL link to the current line with respect to the selected git remote">
+            <add-to-group group-id="CopyFileReference" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift control L"/>
+            <synonym text="Create Line Link"/>
+            <synonym text="Generate Line Link"/>
+            <synonym text="Link Line"/>
+        </action>
+    </actions>
 </idea-plugin>

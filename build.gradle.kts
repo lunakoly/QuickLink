@@ -55,12 +55,18 @@ changelog {
 detekt {
     config = files("./detekt-config.yml")
     buildUponDefaultConfig = true
+    autoCorrect = true
 
     reports {
         html.enabled = false
         xml.enabled = false
         txt.enabled = false
     }
+}
+
+extensions.findByName("buildScan")?.withGroovyBuilder {
+    setProperty("termsOfServiceUrl", "https://gradle.com/terms-of-service")
+    setProperty("termsOfServiceAgree", "yes")
 }
 
 tasks {
