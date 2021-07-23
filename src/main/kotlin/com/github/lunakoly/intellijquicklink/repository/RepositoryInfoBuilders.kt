@@ -10,9 +10,9 @@ class InvalidRemotesException : PopupException(
     "No Remotes",
 )
 
-class NoBranchException : PopupException(
-    "Unfortunately we only can generate branch-based links now",
-    "No Active Branch",
+class NoRevisionException : PopupException(
+    "Couldn't determine the active revision (a commit or a branch)",
+    "No Active Revision",
 )
 
 class GitRepositoryNeededException : PopupException(
@@ -37,9 +37,11 @@ fun getRepositoryInfoAsGit(repo: GitRepository): RepositoryInfo {
     }
 
     val branch = repo.currentBranch?.name
-        ?: throw NoBranchException()
 
-    return RepositoryInfo(branch, map)
+    val commitHash = repo.currentRevision
+        ?: throw NoRevisionException()
+
+    return RepositoryInfo(branch, commitHash, map)
 }
 
 fun getRepositoryInfo(project: Project): RepositoryInfo {

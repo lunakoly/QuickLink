@@ -64,7 +64,7 @@ class CopyLineLinkAction : AnAction() {
                 ?: return@showClickableListIfNeeded
 
             val urlBuilder = UrlBuilderFactory.guessByLink(remoteLink)
-            val url = urlBuilder.buildUrl(remoteLink, repositoryInfo.branch, filePath, lineNumber)
+            val url = urlBuilder.buildUrl(remoteLink, repositoryInfo, filePath, lineNumber)
 
             CopyPasteManager.getInstance().setContents(StringSelection(url))
             project.toast("Line link copied: $url")

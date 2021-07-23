@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [0.0.2] - 2021-07-23
+### Added
+- Added support for individual commits
+
+### Changed
+- Now the plugin generates line links to particular commits only
+- Notification balloon timeout reduced to 3 seconds
+
+### Fixed
+- A type in `UnsupportedUrlFormatException`
+
 ## [0.0.1] - 2021-07-23
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)

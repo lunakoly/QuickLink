@@ -13,8 +13,8 @@ object UrlBuilderFactory {
         }
         else -> {
             throw UnsupportedUrlFormatException(
-                "Only Github URL's are supported",
-                "Non-Github UR"
+                "Only Github URL's are supported. The selected remote link is: '$link'",
+                "Non-Github URL"
             )
         }
     }

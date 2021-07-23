@@ -12,11 +12,24 @@ fun String.removeProtocol(): String {
     return this
 }
 
-fun String.removeExtension(): String {
-    val index = this.indexOfLast { it == '.' }
+fun String.removeUrlParameters(): String {
+    return this.split("&")[0]
+}
 
-    if (index != -1) {
-        return this.substring(0, index)
+fun String.removeTrailingSlash(): String {
+    return if (this.endsWith('/')) {
+        this.substring(0, this.length - 1)
+    } else {
+        this
+    }
+}
+
+fun String.removeUrlExtension(): String {
+    val slashIndex = this.indexOfLast { it == '/' }
+    val dotIndex = this.indexOfLast { it == '.' }
+
+    if (dotIndex != -1 && slashIndex < dotIndex) {
+        return this.substring(0, dotIndex)
     }
 
     return this
