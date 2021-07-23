@@ -17,3 +17,4 @@
 ### Fixed
 - Forbade generating links for locally changed files
 - A type in `UnsupportedUrlFormatException`
+- Plugin ID must now be 17287, not 17286

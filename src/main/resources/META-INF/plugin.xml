@@ -1,4 +1,4 @@
-<idea-plugin url="https://plugins.jetbrains.com/plugin/17286-quick-link">
+<idea-plugin url="https://plugins.jetbrains.com/plugin/17287-quick-link">
     <id>com.github.lunakoly.quicklink</id>
     <name>Quick Link</name>
     <vendor>Nikolay Lunyak</vendor>
