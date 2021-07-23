@@ -11,6 +11,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.ide.CopyPasteManager
+import com.intellij.openapi.vcs.changes.ChangeListManager
 import com.intellij.openapi.vfs.VfsUtilCore
 import java.awt.datatransfer.StringSelection
 
@@ -39,6 +40,11 @@ class RelativePathException : PopupException(
     "Couldn't Calculate the Relative Path",
 )
 
+class ModifiedFileException : PopupException(
+    "The current file has been locally modified, so there's no correct remote representation",
+    "Modified File",
+)
+
 class CopyLineLinkAction : AnAction() {
     @Suppress("ThrowsCount")
     private fun generateLineLink(event: AnActionEvent) {
@@ -58,6 +64,14 @@ class CopyLineLinkAction : AnAction() {
 
         val lineNumber = 1 + editor.document.getLineNumber(editor.caretModel.offset)
         val repositoryInfo = getRepositoryInfo(project)
+
+        val currentFileIsModified = ChangeListManager
+            .getInstance(project)
+            .getChange(currentFile) != null
+
+        if (currentFileIsModified) {
+            throw ModifiedFileException()
+        }
 
         editor.showClickableListIfNeeded(repositoryInfo.remotesNames) {
             val remoteLink = repositoryInfo.remotes[it]
