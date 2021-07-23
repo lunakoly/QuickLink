@@ -1,4 +1,4 @@
-package com.github.lunakoly.intellijquicklink.repository
+package com.github.lunakoly.quicklink.repository
 
 class RepositoryInfo(
     val branch: String?,

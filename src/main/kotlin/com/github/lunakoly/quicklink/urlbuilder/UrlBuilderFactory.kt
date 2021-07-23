@@ -1,8 +1,8 @@
-package com.github.lunakoly.intellijquicklink.urlbuilder
+package com.github.lunakoly.quicklink.urlbuilder
 
-import com.github.lunakoly.intellijquicklink.urlbuilder.implementations.GithubUrlBuilder
-import com.github.lunakoly.intellijquicklink.utils.PopupException
-import com.github.lunakoly.intellijquicklink.utils.domainStartsWith
+import com.github.lunakoly.quicklink.urlbuilder.implementations.GithubUrlBuilder
+import com.github.lunakoly.quicklink.utils.PopupException
+import com.github.lunakoly.quicklink.utils.domainStartsWith
 
 class UnsupportedUrlFormatException(message: String, title: String) : PopupException(message, title)
 
@@ -13,7 +13,7 @@ object UrlBuilderFactory {
         }
         else -> {
             throw UnsupportedUrlFormatException(
-                "Only Github URL's are supported. The selected remote link is: '$link'",
+                "Only Github URL's are supported. The selected remote link is: '$link'.",
                 "Non-Github URL"
             )
         }

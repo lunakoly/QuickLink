@@ -1,6 +1,6 @@
-package com.github.lunakoly.intellijquicklink.urlbuilder
+package com.github.lunakoly.quicklink.urlbuilder
 
-import com.github.lunakoly.intellijquicklink.repository.RepositoryInfo
+import com.github.lunakoly.quicklink.repository.RepositoryInfo
 
 interface UrlBuilder {
     fun buildUrl(

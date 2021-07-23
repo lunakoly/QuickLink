@@ -1,8 +1,14 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# IntelliJQuickLink Changelog
+# QuickLink Changelog
 
 ## [Unreleased]
+
+## [0.0.4] - 2021-07-23
+### Changed
+- Changed the `pluginName` and the `<name>` values to `'Quick Link'
+- Reviewed error messages according to the guidelines
+- Removed the word `intellij` from everywhere
 
 ## [0.0.3] - 2021-07-23
 ### Fixed

@@ -1,6 +1,6 @@
-package com.github.lunakoly.intellijquicklink.listeners
+package com.github.lunakoly.quicklink.listeners
 
-import com.github.lunakoly.intellijquicklink.services.MyProjectService
+import com.github.lunakoly.quicklink.services.MyProjectService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener

@@ -1,6 +1,6 @@
-package com.github.lunakoly.intellijquicklink.repository
+package com.github.lunakoly.quicklink.repository
 
-import com.github.lunakoly.intellijquicklink.utils.PopupException
+import com.github.lunakoly.quicklink.utils.PopupException
 import com.intellij.openapi.project.Project
 import git4idea.repo.GitRepository
 import git4idea.repo.GitRepositoryManager
@@ -11,12 +11,12 @@ class InvalidRemotesException : PopupException(
 )
 
 class NoRevisionException : PopupException(
-    "Couldn't determine the active revision (a commit or a branch)",
+    "Could not determine the active revision (a commit or a branch)",
     "No Active Revision",
 )
 
 class GitRepositoryNeededException : PopupException(
-    "This project has no Git repository associated with it",
+    "This project has no associate Git repository",
     "No Git Repository Found",
 )
 

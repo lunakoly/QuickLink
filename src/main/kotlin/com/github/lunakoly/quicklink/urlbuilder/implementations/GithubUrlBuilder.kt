@@ -1,11 +1,11 @@
-package com.github.lunakoly.intellijquicklink.urlbuilder.implementations
+package com.github.lunakoly.quicklink.urlbuilder.implementations
 
-import com.github.lunakoly.intellijquicklink.repository.RepositoryInfo
-import com.github.lunakoly.intellijquicklink.urlbuilder.UrlBuilder
-import com.github.lunakoly.intellijquicklink.utils.removeProtocol
-import com.github.lunakoly.intellijquicklink.utils.removeTrailingSlash
-import com.github.lunakoly.intellijquicklink.utils.removeUrlExtension
-import com.github.lunakoly.intellijquicklink.utils.removeUrlParameters
+import com.github.lunakoly.quicklink.repository.RepositoryInfo
+import com.github.lunakoly.quicklink.urlbuilder.UrlBuilder
+import com.github.lunakoly.quicklink.utils.removeProtocol
+import com.github.lunakoly.quicklink.utils.removeTrailingSlash
+import com.github.lunakoly.quicklink.utils.removeUrlExtension
+import com.github.lunakoly.quicklink.utils.removeUrlParameters
 
 class GithubUrlBuilder : UrlBuilder {
     override fun buildUrl(

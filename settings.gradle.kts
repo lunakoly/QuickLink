@@ -1,1 +1,1 @@
-rootProject.name = "IntelliJQuickLink"
+rootProject.name = "QuickLink"

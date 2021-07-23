@@ -1,4 +1,4 @@
-package com.github.lunakoly.intellijquicklink.utils
+package com.github.lunakoly.quicklink.utils
 
 import com.intellij.openapi.ui.Messages
 

@@ -1,4 +1,4 @@
-package com.github.lunakoly.intellijquicklink.utils.ui
+package com.github.lunakoly.quicklink.utils.ui
 
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project

@@ -1,12 +1,12 @@
-package com.github.lunakoly.intellijquicklink.actions
+package com.github.lunakoly.quicklink.actions
 
-import com.github.lunakoly.intellijquicklink.repository.getRepositoryInfo
-import com.github.lunakoly.intellijquicklink.urlbuilder.UrlBuilderFactory
-import com.github.lunakoly.intellijquicklink.utils.PopupException
-import com.github.lunakoly.intellijquicklink.utils.catchingPopupExceptions
-import com.github.lunakoly.intellijquicklink.utils.removeDirectoryStepUp
-import com.github.lunakoly.intellijquicklink.utils.ui.showClickableListIfNeeded
-import com.github.lunakoly.intellijquicklink.utils.ui.toast
+import com.github.lunakoly.quicklink.repository.getRepositoryInfo
+import com.github.lunakoly.quicklink.urlbuilder.UrlBuilderFactory
+import com.github.lunakoly.quicklink.utils.PopupException
+import com.github.lunakoly.quicklink.utils.catchingPopupExceptions
+import com.github.lunakoly.quicklink.utils.removeDirectoryStepUp
+import com.github.lunakoly.quicklink.utils.ui.showClickableListIfNeeded
+import com.github.lunakoly.quicklink.utils.ui.toast
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -16,32 +16,32 @@ import com.intellij.openapi.vfs.VfsUtilCore
 import java.awt.datatransfer.StringSelection
 
 class NoProjectException : PopupException(
-    "You first need to open a project",
-    "No Project Opened",
+    "Please, open a project",
+    "No Open Project",
 )
 
 class NoProjectFileException : PopupException(
-    "The project file must be present",
-    "No Project File Selected",
+    "Could not access the project file",
+    "No Project File",
 )
 
 class NoEditorException : PopupException(
-    "Something wrong happened to the editor",
-    "Can't Get the Editor Instance",
+    "Could not access the editor",
+    "No Editor Instance",
 )
 
 class NoActiveFileException : PopupException(
-    "You need to open some file first",
-    "No File Selected",
+    "Please, open a file",
+    "No Open File",
 )
 
 class RelativePathException : PopupException(
-    "Some error while calculating the relative file path",
-    "Couldn't Calculate the Relative Path",
+    "Could not calculate the relative file path",
+    "No Relative Path",
 )
 
 class ModifiedFileException : PopupException(
-    "The current file has been locally modified, so there's no correct remote representation",
+    "Locally modifier files do not have a remote representation",
     "Modified File",
 )
 

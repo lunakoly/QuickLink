@@ -1,4 +1,4 @@
-package com.github.lunakoly.intellijquicklink
+package com.github.lunakoly.quicklink
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls

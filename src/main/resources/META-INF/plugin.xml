@@ -1,7 +1,7 @@
-<idea-plugin>
-    <id>com.github.lunakoly.intellijquicklink</id>
-    <name>IntelliJQuickLink</name>
-    <vendor>lunakoly</vendor>
+<idea-plugin url="https://plugins.jetbrains.com/plugin/17286-quick-link">
+    <id>com.github.lunakoly.quicklink</id>
+    <name>Quick Link</name>
+    <vendor>Nikolay Lunyak</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -9,17 +9,17 @@
     <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.lunakoly.intellijquicklink.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.lunakoly.intellijquicklink.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.lunakoly.quicklink.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.lunakoly.quicklink.services.MyProjectService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.lunakoly.intellijquicklink.listeners.MyProjectManagerListener"
+        <listener class="com.github.lunakoly.quicklink.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
     <actions>
-        <action id="com.github.lunakoly.intellijquicklink.actions.CopyLineLinkAction"
-                class="com.github.lunakoly.intellijquicklink.actions.CopyLineLinkAction" text="Copy Line Link"
+        <action id="com.github.lunakoly.quicklink.actions.CopyLineLinkAction"
+                class="com.github.lunakoly.quicklink.actions.CopyLineLinkAction" text="Copy Line Link"
                 description="Generates an URL link to the current line with respect to the selected git remote">
             <add-to-group group-id="CopyFileReference" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift control L"/>

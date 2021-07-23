@@ -1,6 +1,6 @@
-package com.github.lunakoly.intellijquicklink.utils.ui
+package com.github.lunakoly.quicklink.utils.ui
 
-import com.github.lunakoly.intellijquicklink.utils.catchingPopupExceptions
+import com.github.lunakoly.quicklink.utils.catchingPopupExceptions
 import com.intellij.openapi.ui.popup.PopupStep
 import com.intellij.openapi.ui.popup.util.BaseListPopupStep
 
