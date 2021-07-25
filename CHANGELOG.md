@@ -3,6 +3,12 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+### Added
+- Plugin Icon
+
+### Changed
+- Added more info to the description
+
 ## [0.0.5]
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)

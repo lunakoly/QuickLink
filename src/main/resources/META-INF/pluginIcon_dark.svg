@@ -18,7 +18,7 @@
   <g
      id="layer1">
     <rect
-       style="opacity:1;fill:#2e2e2e;fill-opacity:1;stroke-width:0.0329754"
+       style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke-width:0.0329754"
        id="rect1402"
        width="36"
        height="36"
@@ -43,18 +43,18 @@
     <text
        xml:space="preserve"
        id="text2405"
-       style="font-style:normal;font-weight:normal;font-size:9.87791px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2407);fill:#fcfcfc;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:9.87791px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2407);fill:#383838;fill-opacity:1;stroke:none"
        transform="matrix(1.0000172,0,0,0.99999554,-1.0024221,-0.03775453)"><tspan
          x="8.8203125"
          y="17.498245"
-         id="tspan2786"><tspan
+         id="tspan2733"><tspan
            style="font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic'"
-           id="tspan2784">Quick
+           id="tspan2731">Quick
 </tspan></tspan><tspan
          x="8.8203125"
          y="29.845632"
-         id="tspan2790"><tspan
+         id="tspan2737"><tspan
            style="font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic'"
-           id="tspan2788">Link</tspan></tspan></text>
+           id="tspan2735">Link</tspan></tspan></text>
   </g>
 </svg>
