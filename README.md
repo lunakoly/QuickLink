@@ -28,7 +28,7 @@ Use `Cmd`+`Shift`+`L` on macOS or `Ctrl`+`Shift`+`L` on Windows and Linux to gen
 denoted by your current cursor location. Alternatively, hit double `Shift` and search for the `Copy Line Link` action.
 
 Unfortunately, the extension
-- can only generate GitHub links now
+- can only generate GitHub or Gitlab links now
 - can not generate links to locally modified files (even if these modifications take place after the current cursor location) 
 
 ---

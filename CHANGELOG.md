@@ -5,6 +5,7 @@
 ## [Unreleased]
 ### Added
 - Plugin Icon
+- Gitlab URL's support
 
 ### Changed
 - Added more info to the description

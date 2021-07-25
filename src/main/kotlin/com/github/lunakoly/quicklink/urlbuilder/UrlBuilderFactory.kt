@@ -1,6 +1,7 @@
 package com.github.lunakoly.quicklink.urlbuilder
 
 import com.github.lunakoly.quicklink.urlbuilder.implementations.GithubUrlBuilder
+import com.github.lunakoly.quicklink.urlbuilder.implementations.GitlabUrlBuilder
 import com.github.lunakoly.quicklink.utils.PopupException
 import com.github.lunakoly.quicklink.utils.domainStartsWith
 
@@ -11,10 +12,13 @@ object UrlBuilderFactory {
         link.domainStartsWith("github.com") -> {
             GithubUrlBuilder()
         }
+        link.domainStartsWith("gitlab.com") -> {
+            GitlabUrlBuilder()
+        }
         else -> {
             throw UnsupportedUrlFormatException(
-                "Only Github URL's are supported. The selected remote link is: '$link'.",
-                "Non-Github URL"
+                "Only Github and Gitlab URL's are supported. The selected remote link is: '$link'.",
+                "Non-Github or Non-Gitlab URL"
             )
         }
     }
