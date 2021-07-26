@@ -3,6 +3,7 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+## [0.0.6]
 ### Added
 - Plugin Icon
 - Gitlab URL's support
