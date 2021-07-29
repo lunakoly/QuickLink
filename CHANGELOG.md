@@ -3,6 +3,7 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+## [0.0.7]
 ### Added
 - Support for 212 versions
 
