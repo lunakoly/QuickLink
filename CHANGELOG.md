@@ -3,6 +3,9 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+### Added
+- Support for 212 versions
+
 ## [0.0.6]
 ### Added
 - Plugin Icon
