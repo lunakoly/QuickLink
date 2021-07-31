@@ -1,10 +1,11 @@
 package com.github.lunakoly.quicklink.actions
 
 import com.github.lunakoly.quicklink.repository.getRepositoryInfo
-import com.github.lunakoly.quicklink.urlbuilder.UrlBuilderFactory
+import com.github.lunakoly.quicklink.urlbuilder.UrlBuilders
 import com.github.lunakoly.quicklink.utils.PopupException
 import com.github.lunakoly.quicklink.utils.catchingPopupExceptions
 import com.github.lunakoly.quicklink.utils.removeDirectoryStepUp
+import com.github.lunakoly.quicklink.utils.toDomain
 import com.github.lunakoly.quicklink.utils.ui.showClickableListIfNeeded
 import com.github.lunakoly.quicklink.utils.ui.toast
 import com.intellij.openapi.actionSystem.AnAction

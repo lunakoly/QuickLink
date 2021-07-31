@@ -24,6 +24,8 @@ fun String.removeTrailingSlash(): String {
     }
 }
 
+fun String.beforeFirstSlash() = takeBefore('/')
+
 fun String.removeUrlExtension(): String {
     val slashIndex = this.indexOfLast { it == '/' }
     val dotIndex = this.indexOfLast { it == '.' }
