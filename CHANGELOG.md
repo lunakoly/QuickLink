@@ -3,6 +3,9 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+### Changed
+- Added the 📃 emoji to the GitHub Action's commits
+
 ## [0.0.7]
 ### Added
 - Support for 212 versions
