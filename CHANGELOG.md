@@ -3,6 +3,7 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+## [1.0.0]
 ### Changed
 - Added the 📃 emoji to the GitHub Action's commits
 - Removed the `https://` protocol from generated links. Some corporate domains may not support it.
