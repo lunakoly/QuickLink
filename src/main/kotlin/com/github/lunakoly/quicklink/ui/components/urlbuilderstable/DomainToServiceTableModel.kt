@@ -1,4 +1,4 @@
-package com.github.lunakoly.quicklink.settings.helpers
+package com.github.lunakoly.quicklink.ui.components.urlbuilderstable
 
 import com.github.lunakoly.quicklink.urlbuilder.UrlBuilders
 import com.github.lunakoly.quicklink.utils.ensureCapacity
@@ -6,12 +6,11 @@ import com.github.lunakoly.quicklink.utils.toDomain
 import javax.swing.event.TableModelListener
 import javax.swing.table.TableModel
 
-class DomainToUrlBuildersTableModel : TableModel {
-    private var listDomains = mutableListOf<DomainToUrlBuilder>()
+class ColumnTypeException(message: String) : Exception(message)
 
-    var onDuplicateDomainAppear: ((String) -> Unit)? = null
-
-    var onDuplicateDomainDisappear: (() -> Unit)? = null
+@Suppress("TooManyFunctions")
+class DomainToServiceTableModel : TableModel {
+    private var listDomains = mutableListOf<DomainToService>()
 
     fun loadDomainsMapping(domainsMapping: Map<String, String>) {
         listDomains = domainsMapping.toDomainsList()
@@ -19,12 +18,9 @@ class DomainToUrlBuildersTableModel : TableModel {
     }
 
     private fun onSomeDomainChanged() {
-        val duplicateDomain = getDuplicateDomain()
-
-        if (duplicateDomain != null) {
-            onDuplicateDomainAppear?.invoke(duplicateDomain)
-        } else {
-            onDuplicateDomainDisappear?.invoke()
+        onDomainChanged?.let {
+            val duplicateDomain = getDuplicateDomain()
+            it(duplicateDomain)
         }
     }
 
@@ -32,9 +28,9 @@ class DomainToUrlBuildersTableModel : TableModel {
         return listDomains.associate { it.domainField.text to it.serviceComboBox.item.name }
     }
 
-    private fun Map<String, String>.toDomainsList(): MutableList<DomainToUrlBuilder> {
+    private fun Map<String, String>.toDomainsList(): MutableList<DomainToService> {
         return this
-            .map { DomainToUrlBuilder(::onSomeDomainChanged, it.key, it.value) }
+            .map { DomainToService(::onSomeDomainChanged, it.key, it.value) }
             .toMutableList()
     }
 
@@ -44,8 +40,6 @@ class DomainToUrlBuildersTableModel : TableModel {
         .entries
         .find { it.value > 1 }
         ?.key
-
-    val set = mutableSetOf<TableModelListener>()
 
     override fun getRowCount() = listDomains.size
 
@@ -74,20 +68,38 @@ class DomainToUrlBuildersTableModel : TableModel {
     override fun setValueAt(value: Any?, rowIndex: Int, columnIndex: Int) {
         if (columnIndex == 0) {
             if (value !is String) {
-                throw Exception("First column may only store a String domain")
+                throw ColumnTypeException("First column may only store a String domain")
             }
 
-            listDomains.ensureCapacity(rowIndex, DomainToUrlBuilder(::onSomeDomainChanged))
+            listDomains.ensureCapacity(rowIndex, DomainToService(::onSomeDomainChanged))
             listDomains[rowIndex].domainField.text = value
         } else {
             if (value !is UrlBuilders) {
-                throw Exception("Second column may only store an UrlBuilders enum value")
+                throw ColumnTypeException("Second column may only store an UrlBuilders enum value")
             }
 
-            listDomains.ensureCapacity(rowIndex, DomainToUrlBuilder(::onSomeDomainChanged))
+            listDomains.ensureCapacity(rowIndex, DomainToService(::onSomeDomainChanged))
             listDomains[rowIndex].serviceComboBox.selectedIndex = value.ordinal
         }
     }
+
+    fun addEmptyRow() {
+        listDomains.add(DomainToService(::onSomeDomainChanged))
+        onSomeDomainChanged()
+    }
+
+    fun deleteRow(rowIndex: Int) {
+        listDomains.removeAt(rowIndex)
+        onSomeDomainChanged()
+    }
+
+    private var onDomainChanged: ((String?) -> Unit)? = null
+
+    fun setDuplicateDomainChangeListener(domainChanged: (String?) -> Unit) {
+        onDomainChanged = domainChanged
+    }
+
+    val set = mutableSetOf<TableModelListener>()
 
     override fun addTableModelListener(p0: TableModelListener?) {
         if (p0 != null) this.set.add(p0)
@@ -95,15 +107,5 @@ class DomainToUrlBuildersTableModel : TableModel {
 
     override fun removeTableModelListener(p0: TableModelListener?) {
         if (p0 != null) this.set.remove(p0)
-    }
-
-    fun addEmptyRow() {
-        listDomains.add(DomainToUrlBuilder(::onSomeDomainChanged))
-        onSomeDomainChanged()
-    }
-
-    fun deleteRow(rowIndex: Int) {
-        listDomains.removeAt(rowIndex)
-        onSomeDomainChanged()
     }
 }

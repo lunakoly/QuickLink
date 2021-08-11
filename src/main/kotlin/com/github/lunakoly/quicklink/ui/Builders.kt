@@ -1,6 +1,8 @@
-package com.github.lunakoly.quicklink.utils.ui
+@file:Suppress("unused", "TooManyFunctions")
 
-import com.github.lunakoly.quicklink.settings.helpers.UrlBuildersComboBoxRenderer
+package com.github.lunakoly.quicklink.ui
+
+import com.github.lunakoly.quicklink.ui.components.urlbuilderstable.ServiceComboBoxRenderer
 import com.github.lunakoly.quicklink.urlbuilder.UrlBuilders
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.ToolbarDecorator
@@ -14,25 +16,6 @@ import javax.swing.JComponent
 import javax.swing.JPanel
 import javax.swing.JTable
 import javax.swing.table.TableModel
-import kotlin.reflect.KProperty
-
-class SingleAssign<T> {
-    class Uninitialized : Exception()
-    class Reinitialized : Exception()
-
-    var value: T? = null
-
-    operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        return value ?: throw Uninitialized()
-    }
-
-    operator fun setValue(thisRef: Any?, property: KProperty<*>, newValue: T) {
-        if (value != null) {
-            throw Reinitialized()
-        }
-        value = newValue
-    }
-}
 
 fun buildPanel(setup: FormBuilder.() -> Unit = {}): JPanel {
     return FormBuilder.createFormBuilder().apply(setup).panel
@@ -84,10 +67,6 @@ fun FormBuilder.buildJBTable(model: TableModel, setup: JBTable.() -> Unit = {}):
     }
 }
 
-//fun buildToolbarDecorator(table: JTable, setup: ToolbarDecorator.() -> Unit = {}): ToolbarDecorator {
-//    return ToolbarDecorator.createDecorator(table).apply(setup)
-//}
-
 fun FormBuilder.buildToolbarDecorator(
     table: JTable,
     setup: ToolbarDecorator.() -> Unit = {}
@@ -114,7 +93,7 @@ fun buildUrlBuildersComboBox(
 ): ComboBox<UrlBuilders> {
     return ComboBox(UrlBuilders.values()).apply {
         selectedIndex = initial.ordinal
-        renderer = UrlBuildersComboBoxRenderer()
+        renderer = ServiceComboBoxRenderer()
         isEnabled = true
         isEditable = false
     }

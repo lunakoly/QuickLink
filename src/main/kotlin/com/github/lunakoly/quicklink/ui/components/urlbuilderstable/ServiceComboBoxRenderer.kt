@@ -1,11 +1,11 @@
-package com.github.lunakoly.quicklink.settings.helpers
+package com.github.lunakoly.quicklink.ui.components.urlbuilderstable
 
 import com.github.lunakoly.quicklink.urlbuilder.UrlBuilders
 import java.awt.Component
 import javax.swing.DefaultListCellRenderer
 import javax.swing.JList
 
-class UrlBuildersComboBoxRenderer : DefaultListCellRenderer() {
+class ServiceComboBoxRenderer : DefaultListCellRenderer() {
     override fun getListCellRendererComponent(
         list: JList<*>?,
         value: Any?,

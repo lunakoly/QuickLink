@@ -12,9 +12,17 @@ fun String.removeProtocol(): String {
     return this
 }
 
-fun String.removeUrlParameters(): String {
-    return this.split("&")[0]
+fun String.takeBefore(symbol: Char): String {
+    val index = this.indexOf(symbol)
+
+    return if (index != -1) {
+        this.substring(0, index)
+    } else {
+        this
+    }
 }
+
+fun String.removeUrlParameters() = takeBefore('&')
 
 fun String.removeTrailingSlash(): String {
     return if (this.endsWith('/')) {
@@ -30,7 +38,7 @@ fun String.removeUrlExtension(): String {
     val slashIndex = this.indexOfLast { it == '/' }
     val dotIndex = this.indexOfLast { it == '.' }
 
-    if (dotIndex != -1 && slashIndex < dotIndex) {
+    if (dotIndex != -1 && slashIndex != -1 && slashIndex < dotIndex) {
         return this.substring(0, dotIndex)
     }
 
@@ -50,3 +58,8 @@ fun String.removeDirectoryStepUp(): String {
 fun String.domainStartsWith(prefix: String): Boolean {
     return removeProtocol().startsWith(prefix)
 }
+
+fun String.toDomain() = this
+    .removeProtocol()
+    .removeUrlParameters()
+    .beforeFirstSlash()

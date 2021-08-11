@@ -1,5 +1,6 @@
-package com.github.lunakoly.quicklink.utils.ui
+package com.github.lunakoly.quicklink.ui
 
+import com.github.lunakoly.quicklink.ui.components.PopupExceptionsList
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.MessageType
@@ -10,9 +11,10 @@ import com.intellij.ui.awt.RelativePoint
 
 fun Editor.showClickableListOf(
     things: List<String>,
+    title: String,
     onClick: (String) -> Unit
 ) {
-    val list = PopupExceptionsList(things, onClick)
+    val list = PopupExceptionsList(things, title, onClick)
     JBPopupFactory
         .getInstance()
         .createListPopup(list)
@@ -21,12 +23,13 @@ fun Editor.showClickableListOf(
 
 fun Editor.showClickableListIfNeeded(
     things: List<String>,
+    title: String,
     onClick: (String) -> Unit
 ) {
     if (things.size == 1) {
         onClick(things.first())
     } else {
-        showClickableListOf(things, onClick)
+        showClickableListOf(things, title, onClick)
     }
 }
 

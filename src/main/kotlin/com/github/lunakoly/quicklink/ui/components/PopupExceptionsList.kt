@@ -1,13 +1,14 @@
-package com.github.lunakoly.quicklink.utils.ui
+package com.github.lunakoly.quicklink.ui.components
 
 import com.github.lunakoly.quicklink.utils.catchingPopupExceptions
 import com.intellij.openapi.ui.popup.PopupStep
 import com.intellij.openapi.ui.popup.util.BaseListPopupStep
 
 class PopupExceptionsList(
-    remotes: List<String>,
-    private val buildLink: (String) -> Unit,
-) : BaseListPopupStep<String>("Select a Remote", remotes) {
+    options: List<String>,
+    title: String,
+    private val onSelected: (String) -> Unit,
+) : BaseListPopupStep<String>(title, options) {
     override fun getTextFor(value: String?) = value ?: "<no value>"
 
     private var finalValue: String? = null
@@ -23,7 +24,7 @@ class PopupExceptionsList(
     override fun getFinalRunnable(): Runnable {
         return Runnable {
             catchingPopupExceptions {
-                finalValue?.let(buildLink)
+                finalValue?.let(onSelected)
             }
         }
     }

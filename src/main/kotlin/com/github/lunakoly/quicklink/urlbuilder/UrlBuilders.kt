@@ -4,9 +4,6 @@ import com.github.lunakoly.quicklink.settings.QuickLinkSettingsState
 import com.github.lunakoly.quicklink.urlbuilder.implementations.GithubUrlBuilder
 import com.github.lunakoly.quicklink.urlbuilder.implementations.GitlabUrlBuilder
 import com.github.lunakoly.quicklink.utils.PopupException
-import com.github.lunakoly.quicklink.settings.QuickLinkSettingsStateimport
-
-com.github.lunakoly.quicklink.utils.toDomain
 
 class UnsupportedUrlFormatException(domain: String) : PopupException(
     "Only Github and Gitlab URL's are supported. The selected remote link domain is: '$domain'.",
