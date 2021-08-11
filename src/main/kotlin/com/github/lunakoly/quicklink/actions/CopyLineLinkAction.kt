@@ -1,12 +1,13 @@
 package com.github.lunakoly.quicklink.actions
 
 import com.github.lunakoly.quicklink.repository.getRepositoryInfo
-import com.github.lunakoly.quicklink.urlbuilder.UrlBuilderFactory
+import com.github.lunakoly.quicklink.ui.showClickableListIfNeeded
+import com.github.lunakoly.quicklink.ui.toast
+import com.github.lunakoly.quicklink.urlbuilder.UrlBuilders
 import com.github.lunakoly.quicklink.utils.PopupException
 import com.github.lunakoly.quicklink.utils.catchingPopupExceptions
 import com.github.lunakoly.quicklink.utils.removeDirectoryStepUp
-import com.github.lunakoly.quicklink.utils.ui.showClickableListIfNeeded
-import com.github.lunakoly.quicklink.utils.ui.toast
+import com.github.lunakoly.quicklink.utils.toDomain
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -41,7 +42,7 @@ class RelativePathException : PopupException(
 )
 
 class ModifiedFileException : PopupException(
-    "Locally modifier files do not have a remote representation",
+    "Locally modified files do not have a remote representation",
     "Modified File",
 )
 
@@ -73,11 +74,14 @@ class CopyLineLinkAction : AnAction() {
             throw ModifiedFileException()
         }
 
-        editor.showClickableListIfNeeded(repositoryInfo.remotesNames) {
+        editor.showClickableListIfNeeded(
+            repositoryInfo.remotesNames,
+            title = "Select a Remote",
+        ) {
             val remoteLink = repositoryInfo.remotes[it]
                 ?: return@showClickableListIfNeeded
 
-            val urlBuilder = UrlBuilderFactory.guessByLink(remoteLink)
+            val urlBuilder = UrlBuilders.fromDomain(remoteLink.toDomain())
             val url = urlBuilder.buildUrl(remoteLink, repositoryInfo, filePath, lineNumber)
 
             CopyPasteManager.getInstance().setContents(StringSelection(url))

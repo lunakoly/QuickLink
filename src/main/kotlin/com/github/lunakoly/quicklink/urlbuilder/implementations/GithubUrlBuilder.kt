@@ -21,7 +21,6 @@ class GithubUrlBuilder : UrlBuilder {
             .removeUrlExtension()
 
         return buildString {
-            append("https://")
             append(importantPart)
             append("/blob/")
             // We can't use the branch here, because the

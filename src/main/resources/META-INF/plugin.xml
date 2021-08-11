@@ -9,8 +9,16 @@
     <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.lunakoly.quicklink.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.lunakoly.quicklink.services.MyProjectService"/>
+        <applicationService
+                serviceImplementation="com.github.lunakoly.quicklink.services.MyApplicationService"/>
+        <projectService
+                serviceImplementation="com.github.lunakoly.quicklink.services.MyProjectService"/>
+        <applicationService
+                serviceImplementation="com.github.lunakoly.quicklink.settings.QuickLinkSettingsState"/>
+        <applicationConfigurable parentId="tools"
+                                 instance="com.github.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
+                                 id="com.github.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
+                                 displayName="Quick Link"/>
     </extensions>
 
     <applicationListeners>

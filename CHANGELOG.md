@@ -5,6 +5,13 @@
 ## [Unreleased]
 ### Changed
 - Added the 📃 emoji to the GitHub Action's commits
+- Removed the `https://` protocol from generated links. Some corporate domains may not support it.
+
+### Added
+- Support for custom domains mappings
+
+### Fixed
+- A typo in "Locally modified files"
 
 ## [0.0.7]
 ### Added
