@@ -3,6 +3,7 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+## [1.0.1]
 ### Fixed
 - "No project file in GoLand" issue
 
