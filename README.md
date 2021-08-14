@@ -28,8 +28,15 @@ Use `Cmd`+`Shift`+`L` on macOS or `Ctrl`+`Shift`+`L` on Windows and Linux to gen
 denoted by your current cursor location (alternatively, hit double `Shift` and search for the `Copy Line Link` action).
 The newly generated link will be copied to your clipboard automatically.
 
+Use the `Settings > Tools > Quick Link` tab to configure custom domain mappings.
+It allows associating corporate domains with the corresponding service providers
+(link generation would be done in the same way as it's done for the official 
+github.com/gitlab.com/... domains)
+
+![Settings Tab Image](https://drive.google.com/uc?export=download&id=1qIt8gfIkYNIt8qfIrSP-jl3lrhzvgYMp)
+
 Unfortunately, the extension
-- can only generate GitHub or Gitlab links now
+- can only generate links to remotes powered by GitHub or GitLab services now
 - can not generate links to locally modified files (even if these modifications take place after the current cursor location)
 
 ---

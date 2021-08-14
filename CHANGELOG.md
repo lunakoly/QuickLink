@@ -6,6 +6,9 @@
 ### Fixed
 - "No project file in GoLand" issue
 
+### Added
+- More info on the settings tab usage
+
 ## [1.0.0]
 ### Changed
 - Added the 📃 emoji to the GitHub Action's commits

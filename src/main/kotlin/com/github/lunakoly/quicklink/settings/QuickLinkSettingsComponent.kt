@@ -14,7 +14,8 @@ import com.intellij.util.castSafelyTo
 import java.awt.Color
 import javax.swing.table.JTableHeader
 
-private const val HELP_TEXT = "Add custom domain mapping here"
+private const val HELP_TEXT =
+    "Use the following table to associate a custom corporate domain with the corresponding service"
 
 private fun getErrorText(duplicateDomain: String): String {
     return "There are duplicate domains in the table: '$duplicateDomain'"
