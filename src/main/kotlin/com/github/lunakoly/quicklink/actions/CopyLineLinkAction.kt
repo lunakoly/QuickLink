@@ -6,7 +6,6 @@ import com.github.lunakoly.quicklink.ui.toast
 import com.github.lunakoly.quicklink.urlbuilder.UrlBuilders
 import com.github.lunakoly.quicklink.utils.PopupException
 import com.github.lunakoly.quicklink.utils.catchingPopupExceptions
-import com.github.lunakoly.quicklink.utils.removeDirectoryStepUp
 import com.github.lunakoly.quicklink.utils.toDomain
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -19,11 +18,6 @@ import java.awt.datatransfer.StringSelection
 class NoProjectException : PopupException(
     "Please, open a project",
     "No Open Project",
-)
-
-class NoProjectFileException : PopupException(
-    "Could not access the project file",
-    "No Project File",
 )
 
 class NoEditorException : PopupException(
@@ -51,20 +45,17 @@ class CopyLineLinkAction : AnAction() {
     private fun generateLineLink(event: AnActionEvent) {
         val project = event.project
             ?: throw NoProjectException()
-        val projectFile = project.projectFile
-            ?: throw NoProjectFileException()
         val editor = event.getData(CommonDataKeys.EDITOR)
             ?: throw NoEditorException()
         val currentFile = event.dataContext.getData(CommonDataKeys.VIRTUAL_FILE)
             ?: throw NoActiveFileException()
 
-        val filePath = VfsUtilCore
-            .findRelativePath(projectFile, currentFile, VfsUtilCore.VFS_SEPARATOR_CHAR)
-            ?.removeDirectoryStepUp()
-            ?: throw RelativePathException()
-
         val lineNumber = 1 + editor.document.getLineNumber(editor.caretModel.offset)
         val repositoryInfo = getRepositoryInfo(project)
+
+        val filePath = VfsUtilCore
+            .findRelativePath(repositoryInfo.root, currentFile, VfsUtilCore.VFS_SEPARATOR_CHAR)
+            ?: throw RelativePathException()
 
         val currentFileIsModified = ChangeListManager
             .getInstance(project)

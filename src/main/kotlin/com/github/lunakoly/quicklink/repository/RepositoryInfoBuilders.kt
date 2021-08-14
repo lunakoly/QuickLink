@@ -41,7 +41,7 @@ fun getRepositoryInfoAsGit(repo: GitRepository): RepositoryInfo {
     val commitHash = repo.currentRevision
         ?: throw NoRevisionException()
 
-    return RepositoryInfo(branch, commitHash, map)
+    return RepositoryInfo(repo.root, branch, commitHash, map)
 }
 
 fun getRepositoryInfo(project: Project): RepositoryInfo {

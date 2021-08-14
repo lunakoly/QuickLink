@@ -3,6 +3,9 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+### Fixed
+- "No project file in GoLand" issue
+
 ## [1.0.0]
 ### Changed
 - Added the 📃 emoji to the GitHub Action's commits
