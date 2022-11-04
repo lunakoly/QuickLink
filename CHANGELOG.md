@@ -3,6 +3,11 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+
+### Added
+
+- Support for multiple newer IJ versions
+
 ## [1.0.2]
 
 ### Added
