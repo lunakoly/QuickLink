@@ -2,6 +2,7 @@ package com.github.lunakoly.quicklink.urlbuilder.implementations
 
 import com.github.lunakoly.quicklink.repository.RepositoryInfo
 import com.github.lunakoly.quicklink.urlbuilder.UrlBuilder
+import com.github.lunakoly.quicklink.utils.cleanSSHUrl
 import com.github.lunakoly.quicklink.utils.removeProtocol
 import com.github.lunakoly.quicklink.utils.removeTrailingSlash
 import com.github.lunakoly.quicklink.utils.removeUrlExtension
@@ -16,6 +17,7 @@ class GitlabUrlBuilder : UrlBuilder {
     ): String {
         val importantPart = remoteLink
             .removeProtocol()
+            .cleanSSHUrl()
             .removeUrlParameters()
             .removeTrailingSlash()
             .removeUrlExtension()
