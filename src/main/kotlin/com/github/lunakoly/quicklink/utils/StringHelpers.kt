@@ -1,15 +1,22 @@
 package com.github.lunakoly.quicklink.utils
 
-const val PROTOCOL_SEPARATOR = "://"
+const val HTTPS_PROTOCOL_SEPARATOR = "://"
+const val GIT_PROTOCOL_SEPARATOR = "@"
+const val SSH_URL_IDENTIFIER = "git@"
 
 fun String.removeProtocol(): String {
-    val index = this.indexOf(PROTOCOL_SEPARATOR)
-
-    if (index != -1) {
-        return this.substring(index + PROTOCOL_SEPARATOR.length)
+    val protocolSeparator = when {
+        startsWith(SSH_URL_IDENTIFIER) -> GIT_PROTOCOL_SEPARATOR
+        else -> HTTPS_PROTOCOL_SEPARATOR
     }
 
-    return this
+    val index = this.indexOf(protocolSeparator)
+
+    return if (index != -1) {
+        substring(index + protocolSeparator.length)
+    } else {
+        return this
+    }
 }
 
 fun String.takeBefore(symbol: Char): String {
@@ -45,6 +52,12 @@ fun String.removeUrlExtension(): String {
     return this
 }
 
+fun String.cleanSSHUrl(): String {
+    // replaces the : with / in
+    // git@github.com:lunakoly/QuickLink.git
+    return this.replaceFirst(":", "/")
+}
+
 const val FOLDER_STEP_UP = "../"
 
 fun String.removeDirectoryStepUp(): String {
@@ -61,5 +74,6 @@ fun String.domainStartsWith(prefix: String): Boolean {
 
 fun String.toDomain() = this
     .removeProtocol()
+    .cleanSSHUrl()
     .removeUrlParameters()
     .beforeFirstSlash()

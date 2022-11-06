@@ -3,6 +3,11 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+
+### Added
+
+- Support for ssh URLs in git remote
+
 ## [1.0.3]
 
 ### Added
