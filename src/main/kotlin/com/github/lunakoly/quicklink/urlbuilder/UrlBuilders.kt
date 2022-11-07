@@ -3,6 +3,7 @@ package com.github.lunakoly.quicklink.urlbuilder
 import com.github.lunakoly.quicklink.settings.QuickLinkSettingsState
 import com.github.lunakoly.quicklink.urlbuilder.implementations.GithubUrlBuilder
 import com.github.lunakoly.quicklink.urlbuilder.implementations.GitlabUrlBuilder
+import com.github.lunakoly.quicklink.urlbuilder.implementations.SpaceUrlBuilder
 import com.github.lunakoly.quicklink.utils.PopupException
 
 class UnsupportedUrlFormatException(domain: String) : PopupException(
@@ -26,7 +27,8 @@ enum class UrlBuilders(
     private val backend: UrlBuilder,
 ) : UrlBuilder by backend {
     GITHUB_BUILDER("GitHub", GithubUrlBuilder()),
-    GITLAB_BUILDER("GitLab", GitlabUrlBuilder());
+    GITLAB_BUILDER("GitLab", GitlabUrlBuilder()),
+    SPACE_BUILDER("Space", SpaceUrlBuilder());
 
     companion object {
         fun fromName(name: String) = namesMapping[name] ?: GITHUB_BUILDER

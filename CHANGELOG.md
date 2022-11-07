@@ -9,6 +9,10 @@
 
 - Support for ssh URLs in git remote
 
+### Added
+
+- Support Space
+
 ## [1.0.3]
 
 ### Added
