@@ -51,7 +51,7 @@ class CopyLineLinkAction : AnAction() {
             ?: throw NoActiveFileException()
 
         val lineNumber = 1 + editor.document.getLineNumber(editor.caretModel.offset)
-        val repositoryInfo = getRepositoryInfo(project)
+        val repositoryInfo = getRepositoryInfo(project, currentFile)
 
         val filePath = VfsUtilCore
             .findRelativePath(repositoryInfo.root, currentFile, VfsUtilCore.VFS_SEPARATOR_CHAR)

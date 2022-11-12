@@ -3,6 +3,11 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+
+### Added
+
+- Add support for git submodule
+
 ## [1.0.4]
 
 ### Added
