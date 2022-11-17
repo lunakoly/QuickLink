@@ -48,6 +48,9 @@ class CopyLineLinkAction : AnAction() {
         val editor = event.getData(CommonDataKeys.EDITOR)
             ?: throw NoEditorException()
         val currentFile = event.dataContext.getData(CommonDataKeys.VIRTUAL_FILE)
+            ?.let {
+                it.canonicalFile
+            }
             ?: throw NoActiveFileException()
 
         val lineNumber = 1 + editor.document.getLineNumber(editor.caretModel.offset)

@@ -3,6 +3,11 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+
+### Added
+
+- Add support for symlink in file path
+
 ## [1.0.5]
 
 ### Added
