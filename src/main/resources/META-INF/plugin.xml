@@ -1,3 +1,4 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin url="https://plugins.jetbrains.com/plugin/17287-quick-link">
     <id>com.github.lunakoly.quicklink</id>
     <name>Quick Link</name>
