@@ -3,6 +3,12 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+
+### Changed
+
+- Merge changes from the 1.7.0 version of the IntelliJ plugin template
+- Remove the upper bound of the supported IJ versions
+
 ## [1.0.6]
 
 ### Added
