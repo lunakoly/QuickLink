@@ -3,6 +3,11 @@
 # QuickLink Changelog
 
 ## [Unreleased]
+
+### Added
+
+- Support for IJ version 231
+
 ## [1.0.6]
 
 ### Added
