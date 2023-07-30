@@ -1,6 +1,6 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin url="https://plugins.jetbrains.com/plugin/17287-quick-link">
-    <id>com.github.lunakoly.quicklink</id>
+    <id>org.lunakoly.quicklink</id>
     <name>Quick Link</name>
     <vendor>Nikolay Lunyak</vendor>
 
@@ -11,16 +11,16 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService
-                serviceImplementation="com.github.lunakoly.quicklink.settings.QuickLinkSettingsState"/>
+                serviceImplementation="org.lunakoly.quicklink.settings.QuickLinkSettingsState"/>
         <applicationConfigurable parentId="tools"
-                                 instance="com.github.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
-                                 id="com.github.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
+                                 instance="org.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
+                                 id="org.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
                                  displayName="Quick Link"/>
     </extensions>
 
     <actions>
-        <action id="com.github.lunakoly.quicklink.actions.CopyLineLinkAction"
-                class="com.github.lunakoly.quicklink.actions.CopyLineLinkAction" text="Copy Line Link"
+        <action id="org.lunakoly.quicklink.actions.CopyLineLinkAction"
+                class="org.lunakoly.quicklink.actions.CopyLineLinkAction" text="Copy Line Link"
                 description="Generates an URL link to the current line with respect to the selected git remote">
             <add-to-group group-id="CopyFileReference" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift control L"/>
