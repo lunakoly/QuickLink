@@ -58,20 +58,6 @@ fun String.cleanSSHUrl(): String {
     return this.replaceFirst(":", "/")
 }
 
-const val FOLDER_STEP_UP = "../"
-
-fun String.removeDirectoryStepUp(): String {
-    return if (FOLDER_STEP_UP in this) {
-        this.substring(FOLDER_STEP_UP.length)
-    } else {
-        this
-    }
-}
-
-fun String.domainStartsWith(prefix: String): Boolean {
-    return removeProtocol().startsWith(prefix)
-}
-
 fun String.toDomain() = this
     .removeProtocol()
     .cleanSSHUrl()

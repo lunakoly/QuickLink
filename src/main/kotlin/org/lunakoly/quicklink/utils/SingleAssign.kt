@@ -6,7 +6,7 @@ class SingleAssign<T> {
     class Uninitialized : Exception()
     class Reinitialized : Exception()
 
-    var value: T? = null
+    private var value: T? = null
 
     operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
         return value ?: throw Uninitialized()
