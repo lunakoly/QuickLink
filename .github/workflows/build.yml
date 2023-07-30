@@ -147,6 +147,7 @@ jobs:
       contents: write
       checks: write
       pull-requests: write
+      security-events: write
     steps:
 
       # Check out current repository
