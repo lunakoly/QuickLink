@@ -35,9 +35,10 @@ github.com/gitlab.com/... domains)
 
 ![Settings Tab Image](https://drive.google.com/uc?export=download&id=1qIt8gfIkYNIt8qfIrSP-jl3lrhzvgYMp)
 
-Unfortunately, the extension
-- can only generate links to remotes powered by GitHub or GitLab services now
-- can not generate links to locally modified files (even if these modifications take place after the current cursor location)
+Unfortunately, the extension:
+
+1. can only generate links to remotes powered by GitHub or GitLab services now;
+1. can not generate links to locally modified files (even if these modifications take place after the current cursor location).
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].

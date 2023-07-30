@@ -1,3 +1,4 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin url="https://plugins.jetbrains.com/plugin/17287-quick-link">
     <id>com.github.lunakoly.quicklink</id>
     <name>Quick Link</name>
@@ -10,10 +11,6 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService
-                serviceImplementation="com.github.lunakoly.quicklink.services.MyApplicationService"/>
-        <projectService
-                serviceImplementation="com.github.lunakoly.quicklink.services.MyProjectService"/>
-        <applicationService
                 serviceImplementation="com.github.lunakoly.quicklink.settings.QuickLinkSettingsState"/>
         <applicationConfigurable parentId="tools"
                                  instance="com.github.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
@@ -21,10 +18,6 @@
                                  displayName="Quick Link"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.lunakoly.quicklink.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
     <actions>
         <action id="com.github.lunakoly.quicklink.actions.CopyLineLinkAction"
                 class="com.github.lunakoly.quicklink.actions.CopyLineLinkAction" text="Copy Line Link"
