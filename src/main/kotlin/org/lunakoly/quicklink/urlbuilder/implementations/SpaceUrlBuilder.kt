@@ -24,6 +24,7 @@ class SpaceUrlBuilder : UrlBuilder {
             .replaceFirst("""([^/]*)/([^/]*)/(.*)""".toRegex(), "$1/p/$2/repositories/$3/files/")
 
         return buildString {
+            append("https://")
             append(importantPart)
             // We can't use the branch here, because the
             // current user might have not updated their
