@@ -166,6 +166,13 @@ jobs:
         with:
           cache-default-branch-only: true
 
+      # Save the Qodana report
+      # https://github.com/jetbrains/qodana-action#github-code-scanning
+      - name: Qodana Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
+
   # Run plugin structure verification along with IntelliJ Plugin Verifier
   verify:
     name: Verify plugin
