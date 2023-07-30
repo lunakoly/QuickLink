@@ -8,6 +8,7 @@
 
 - Merge changes from the 1.9.0 version of the IntelliJ plugin template
 - Remove the upper bound of the supported IJ versions
+- Now the Copy Line Link action may be called even before the indexes have been built
 
 ## [1.0.6]
 
