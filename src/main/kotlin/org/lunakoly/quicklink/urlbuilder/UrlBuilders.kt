@@ -7,7 +7,7 @@ import org.lunakoly.quicklink.urlbuilder.implementations.SpaceUrlBuilder
 import org.lunakoly.quicklink.utils.PopupException
 
 class UnsupportedUrlFormatException(domain: String) : PopupException(
-    "Only Github and Gitlab URL's are supported. The selected remote link domain is: '$domain'.",
+    "Only Github and Gitlab URLs are supported. The selected remote link domain is: '$domain'.",
     "Non-Github or Non-Gitlab URL"
 )
 
