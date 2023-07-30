@@ -1,5 +1,11 @@
 package org.lunakoly.quicklink.actions
 
+import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.ide.CopyPasteManager
+import com.intellij.openapi.project.DumbAwareAction
+import com.intellij.openapi.vcs.changes.ChangeListManager
+import com.intellij.openapi.vfs.VfsUtilCore
 import org.lunakoly.quicklink.repository.getRepositoryInfo
 import org.lunakoly.quicklink.ui.showClickableListIfNeeded
 import org.lunakoly.quicklink.ui.toast
@@ -7,12 +13,6 @@ import org.lunakoly.quicklink.urlbuilder.UrlBuilders
 import org.lunakoly.quicklink.utils.PopupException
 import org.lunakoly.quicklink.utils.catchingPopupExceptions
 import org.lunakoly.quicklink.utils.toDomain
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.ide.CopyPasteManager
-import com.intellij.openapi.vcs.changes.ChangeListManager
-import com.intellij.openapi.vfs.VfsUtilCore
 import java.awt.datatransfer.StringSelection
 
 class NoProjectException : PopupException(
@@ -40,17 +40,14 @@ class ModifiedFileException : PopupException(
     "Modified File",
 )
 
-class CopyLineLinkAction : AnAction() {
+class CopyLineLinkAction : DumbAwareAction() {
     @Suppress("ThrowsCount")
     private fun generateLineLink(event: AnActionEvent) {
         val project = event.project
             ?: throw NoProjectException()
         val editor = event.getData(CommonDataKeys.EDITOR)
             ?: throw NoEditorException()
-        val currentFile = event.dataContext.getData(CommonDataKeys.VIRTUAL_FILE)
-            ?.let {
-                it.canonicalFile
-            }
+        val currentFile = event.dataContext.getData(CommonDataKeys.VIRTUAL_FILE)?.canonicalFile
             ?: throw NoActiveFileException()
 
         val lineNumber = 1 + editor.document.getLineNumber(editor.caretModel.offset)
