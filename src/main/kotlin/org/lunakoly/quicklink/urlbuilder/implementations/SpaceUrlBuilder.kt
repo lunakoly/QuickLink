@@ -13,7 +13,9 @@ class SpaceUrlBuilder : UrlBuilder {
         remoteLink: String,
         repositoryInfo: RepositoryInfo,
         filePath: String,
-        lineNumber: Int,
+        lineNumber: Pair<Int, Int>,
+        columnNumber: Pair<Int, Int>,
+        isSelection: Boolean,
     ): String {
         val importantPart = remoteLink
             .removeProtocol()
@@ -34,8 +36,15 @@ class SpaceUrlBuilder : UrlBuilder {
             append('/')
             append(filePath)
             append("?tab=source&line=")
-            append(lineNumber)
-            append("&lines-count=1")
+            //
+            append(lineNumber.first)
+            append("&lines-count=")
+            if (isSelection) {
+                val lineCount = lineNumber.second - lineNumber.first
+                append(lineCount)
+            } else {
+                append("1")
+            }
         }
     }
 }
