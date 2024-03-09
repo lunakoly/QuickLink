@@ -7,6 +7,13 @@ interface UrlBuilder {
         remoteLink: String,
         repositoryInfo: RepositoryInfo,
         filePath: String,
-        lineNumber: Int,
+        selection: Selection,
     ): String
+}
+
+data class LineOffset(val lineNumber: Int, val columnNumber: Int)
+
+sealed class Selection {
+    data class MultilineSelection(val start: LineOffset, val end: LineOffset) : Selection()
+    data class SingleLinkSelection(val lineOffset: LineOffset) : Selection()
 }

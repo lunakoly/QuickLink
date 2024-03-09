@@ -1,6 +1,7 @@
 package org.lunakoly.quicklink.urlbuilder.implementations
 
 import org.lunakoly.quicklink.repository.RepositoryInfo
+import org.lunakoly.quicklink.urlbuilder.Selection
 import org.lunakoly.quicklink.urlbuilder.UrlBuilder
 import org.lunakoly.quicklink.utils.cleanSSHUrl
 import org.lunakoly.quicklink.utils.removeProtocol
@@ -13,7 +14,7 @@ class GitlabUrlBuilder : UrlBuilder {
         remoteLink: String,
         repositoryInfo: RepositoryInfo,
         filePath: String,
-        lineNumber: Int
+        selection: Selection,
     ): String {
         val importantPart = remoteLink
             .removeProtocol()
@@ -34,7 +35,17 @@ class GitlabUrlBuilder : UrlBuilder {
             append('/')
             append(filePath)
             append("#L")
-            append(lineNumber)
+            when (selection) {
+                is Selection.MultilineSelection -> {
+                    // Gitlab currently doesn't support column selection
+                    append(selection.start.lineNumber)
+                    append("-L")
+                    append(selection.end.lineNumber)
+                }
+                is Selection.SingleLinkSelection -> {
+                    append(selection.lineOffset.lineNumber)
+                }
+            }
         }
     }
 }
