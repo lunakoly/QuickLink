@@ -50,7 +50,22 @@ class CopyLineLinkAction : DumbAwareAction() {
         val currentFile = event.dataContext.getData(CommonDataKeys.VIRTUAL_FILE)?.canonicalFile
             ?: throw NoActiveFileException()
 
-        val lineNumber = 1 + editor.document.getLineNumber(editor.caretModel.offset)
+        val isSelection = editor.selectionModel.hasSelection()
+
+        val lineNumber: Pair<Int, Int>
+        val columnNumber: Pair<Int, Int>
+        if (isSelection) {
+            val startLine = 1 + editor.selectionModel.selectionStartPosition!!.getLine()
+            val endLine = 1 + editor.selectionModel.selectionEndPosition!!.getLine()
+            val startColumn = 1 + editor.selectionModel.selectionStartPosition!!.getColumn()
+            val endColumn = 1 + editor.selectionModel.selectionEndPosition!!.getColumn()
+            lineNumber = Pair(startLine, endLine)
+            columnNumber = Pair(startColumn, endColumn)
+        } else {
+            lineNumber = Pair(1 + editor.document.getLineNumber(editor.caretModel.offset), 0)
+            columnNumber = Pair(0, 0)
+        }
+
         val repositoryInfo = getRepositoryInfo(project, currentFile)
 
         val filePath = VfsUtilCore
@@ -73,7 +88,7 @@ class CopyLineLinkAction : DumbAwareAction() {
                 ?: return@showClickableListIfNeeded
 
             val urlBuilder = UrlBuilders.fromDomain(remoteLink.toDomain())
-            val url = urlBuilder.buildUrl(remoteLink, repositoryInfo, filePath, lineNumber)
+            val url = urlBuilder.buildUrl(remoteLink, repositoryInfo, filePath, lineNumber, columnNumber, isSelection)
 
             CopyPasteManager.getInstance().setContents(StringSelection(url))
             project.toast("Line link copied: $url")

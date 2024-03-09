@@ -13,7 +13,9 @@ class GithubUrlBuilder : UrlBuilder {
         remoteLink: String,
         repositoryInfo: RepositoryInfo,
         filePath: String,
-        lineNumber: Int,
+        lineNumber: Pair<Int, Int>,
+        columnNumber: Pair<Int, Int>,
+        isSelection: Boolean,
     ): String {
         val importantPart = remoteLink
             .removeProtocol()
@@ -34,7 +36,17 @@ class GithubUrlBuilder : UrlBuilder {
             append('/')
             append(filePath)
             append("#L")
-            append(lineNumber)
+            if (isSelection) {
+                append(lineNumber.first)
+                append("C")
+                append(columnNumber.first)
+                append("-L")
+                append(lineNumber.second)
+                append("C")
+                append(columnNumber.second)
+            } else {
+                append(lineNumber.first)
+            }
         }
     }
 }

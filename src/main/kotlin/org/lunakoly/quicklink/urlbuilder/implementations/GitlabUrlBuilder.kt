@@ -13,7 +13,9 @@ class GitlabUrlBuilder : UrlBuilder {
         remoteLink: String,
         repositoryInfo: RepositoryInfo,
         filePath: String,
-        lineNumber: Int
+        lineNumber: Pair<Int, Int>,
+        columnNumber: Pair<Int, Int>,
+        isSelection: Boolean,
     ): String {
         val importantPart = remoteLink
             .removeProtocol()
@@ -34,7 +36,14 @@ class GitlabUrlBuilder : UrlBuilder {
             append('/')
             append(filePath)
             append("#L")
-            append(lineNumber)
+            if (isSelection) {
+                // Gitlab currently doesn't support column selection
+                append(lineNumber.first)
+                append("-L")
+                append(lineNumber.second)
+            } else {
+                append(lineNumber.first)
+            }
         }
     }
 }
