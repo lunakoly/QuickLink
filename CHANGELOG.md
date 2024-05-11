@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add support for generating multiline selection links for GitHub and Gitlab
+
+## [1.0.7]
+
 ### Changed
 
 - Merge changes from the 1.9.0 version of the IntelliJ plugin template
