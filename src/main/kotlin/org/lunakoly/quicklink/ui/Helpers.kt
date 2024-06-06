@@ -37,13 +37,17 @@ const val FADE_OUT_DELAY_MS = 3000L
 
 fun Project.toast(message: String) {
     val statusBar = WindowManager.getInstance().getStatusBar(this)
+    val component = statusBar.component ?: run {
+        println("statusBar component is null")
+        return
+    }
 
     JBPopupFactory.getInstance()
         .createHtmlTextBalloonBuilder(message, MessageType.INFO, null)
         .setFadeoutTime(FADE_OUT_DELAY_MS)
         .createBalloon()
         .show(
-            RelativePoint.getCenterOf(statusBar.component),
+            RelativePoint.getCenterOf(component),
             Balloon.Position.atRight
         )
 }
