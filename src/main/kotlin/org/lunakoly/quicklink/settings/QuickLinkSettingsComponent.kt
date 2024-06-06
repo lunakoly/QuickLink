@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.ActionToolbarPosition
 import com.intellij.ui.ToolbarDecorator
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.table.JBTable
-import com.intellij.util.castSafelyTo
 import java.awt.Color
 import javax.swing.table.JTableHeader
 
@@ -68,13 +67,13 @@ class QuickLinkSettingsComponent {
     }
 
     private fun onApply() {
-        tableDomains.model.castSafelyTo<DomainToServiceTableModel>()?.addEmptyRow()
+        (tableDomains.model as? DomainToServiceTableModel)?.addEmptyRow()
         tableDomains.updateUI()
     }
 
     private fun onDelete(rowIndex: Int?) {
         if (rowIndex != null) {
-            tableDomains.model.castSafelyTo<DomainToServiceTableModel>()?.deleteRow(rowIndex)
+            (tableDomains.model as? DomainToServiceTableModel)?.deleteRow(rowIndex)
         }
         tableDomains.updateUI()
     }
