@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Fixed
+- Fixed multiline selection on IDE version 2024
+- Fixed compiling on IDE version 2024
+
 ## [1.0.8] - 2024-05-11
 
 ### Added
