@@ -53,8 +53,8 @@ class CopyLineLinkAction : DumbAwareAction() {
             ?: throw NoActiveFileException()
 
         val selection = if (editor.selectionModel.hasSelection()) {
-            val startLine = 1 + editor.selectionModel.selectionStartPosition!!.getLine()
-            val endLine = 1 + editor.selectionModel.selectionEndPosition!!.getLine()
+            val startLine = 1 + editor.document.getLineNumber(editor.selectionModel.selectionStart)
+            val endLine = 1 + editor.document.getLineNumber(editor.selectionModel.selectionEnd)
             val startColumn = 1 + editor.selectionModel.selectionStartPosition!!.getColumn()
             val endColumn = 1 + editor.selectionModel.selectionEndPosition!!.getColumn()
             val startOffset = LineOffset(startLine, startColumn)
