@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+### Added
+- Bitbucket URL's support
+
 ## [1.0.9] - 2024-06-13
 
 ### Fixed
