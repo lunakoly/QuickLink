@@ -4,11 +4,12 @@ import org.lunakoly.quicklink.settings.QuickLinkSettingsState
 import org.lunakoly.quicklink.urlbuilder.implementations.GithubUrlBuilder
 import org.lunakoly.quicklink.urlbuilder.implementations.GitlabUrlBuilder
 import org.lunakoly.quicklink.urlbuilder.implementations.SpaceUrlBuilder
+import org.lunakoly.quicklink.urlbuilder.implementations.BitbucketUrlBuilder
 import org.lunakoly.quicklink.utils.PopupException
 
 class UnsupportedUrlFormatException(domain: String) : PopupException(
-    "Only Github and Gitlab URLs are supported. The selected remote link domain is: '$domain'.",
-    "Non-Github or Non-Gitlab URL"
+    "Only Github / Gitlab / Bitbucket URLs are supported. The selected remote link domain is: '$domain'.",
+    "Non-{Github/Gitlab/Bitbucket} URL"
 )
 
 private val namesMapping by lazy {
@@ -20,6 +21,7 @@ private val namesMapping by lazy {
 private val defaultDomainsMapping = mapOf(
     "github.com" to UrlBuilders.GITHUB_BUILDER,
     "gitlab.com" to UrlBuilders.GITLAB_BUILDER,
+    "bitbucket.org" to UrlBuilders.BITBUCKET_BUILDER,
 )
 
 enum class UrlBuilders(
@@ -28,7 +30,8 @@ enum class UrlBuilders(
 ) : UrlBuilder by backend {
     GITHUB_BUILDER("GitHub", GithubUrlBuilder()),
     GITLAB_BUILDER("GitLab", GitlabUrlBuilder()),
-    SPACE_BUILDER("Space", SpaceUrlBuilder());
+    SPACE_BUILDER("Space", SpaceUrlBuilder()),
+    BITBUCKET_BUILDER("Bitbucket", BitbucketUrlBuilder());
 
     companion object {
         fun fromName(name: String) = namesMapping[name] ?: GITHUB_BUILDER
