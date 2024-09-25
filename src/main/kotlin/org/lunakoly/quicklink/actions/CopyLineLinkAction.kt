@@ -7,6 +7,7 @@ import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.vcs.changes.ChangeListManager
 import com.intellij.openapi.vfs.VfsUtilCore
 import org.lunakoly.quicklink.repository.getRepositoryInfo
+import org.lunakoly.quicklink.ui.warn
 import org.lunakoly.quicklink.ui.showClickableListIfNeeded
 import org.lunakoly.quicklink.ui.toast
 import org.lunakoly.quicklink.urlbuilder.LineOffset
@@ -35,11 +36,6 @@ class NoActiveFileException : PopupException(
 class RelativePathException : PopupException(
     "Could not calculate the relative file path",
     "No Relative Path",
-)
-
-class ModifiedFileException : PopupException(
-    "Locally modified files do not have a remote representation",
-    "Modified File",
 )
 
 class CopyLineLinkAction : DumbAwareAction() {
@@ -76,7 +72,7 @@ class CopyLineLinkAction : DumbAwareAction() {
             .getChange(currentFile) != null
 
         if (currentFileIsModified) {
-            throw ModifiedFileException()
+            project.warn("This is a locally modified file, the line number may be inaccurate")
         }
 
         editor.showClickableListIfNeeded(

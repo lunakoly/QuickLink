@@ -1,6 +1,7 @@
 package org.lunakoly.quicklink.ui
 
-import org.lunakoly.quicklink.ui.components.PopupExceptionsList
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.MessageType
@@ -8,6 +9,7 @@ import com.intellij.openapi.ui.popup.Balloon
 import com.intellij.openapi.ui.popup.JBPopupFactory
 import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.awt.RelativePoint
+import org.lunakoly.quicklink.ui.components.PopupExceptionsList
 
 fun Editor.showClickableListOf(
     things: List<String>,
@@ -51,3 +53,9 @@ fun Project.toast(message: String) {
             Balloon.Position.atRight
         )
 }
+
+fun Project.warn(message: String) =
+    NotificationGroupManager.getInstance()
+        .getNotificationGroup("QuickLink Notifications")
+        .createNotification(message, NotificationType.WARNING)
+        .notify(this)

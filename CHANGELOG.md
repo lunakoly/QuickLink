@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+### Changed
+- Now the plugin allows generating links to modified files, even though the lines may be inaccurate
+
 ## [1.0.10] - 2024-06-29
 
 ### Added

@@ -16,6 +16,8 @@
                                  instance="org.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
                                  id="org.lunakoly.quicklink.settings.QuickLinkSettingsConfigurable"
                                  displayName="Quick Link"/>
+        <notificationGroup id="QuickLink Notifications"
+                           displayType="BALLOON"/>
     </extensions>
 
     <actions>
