@@ -6,6 +6,10 @@
 
 ### Changed
 - Now the plugin allows generating links to modified files, even though the lines may be inaccurate
+- If the current commit is not reachable from remote branches, the plugin will look for the closest parent commit that is
+
+### Added
+- Two new actions: "Copy Current Commit Line Link" (the old behavior) and "Copy Latest Default Line Link"
 
 ## [1.0.10] - 2024-06-29
 

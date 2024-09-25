@@ -23,12 +23,28 @@
     <actions>
         <action id="org.lunakoly.quicklink.actions.CopyLineLinkAction"
                 class="org.lunakoly.quicklink.actions.CopyLineLinkAction" text="Copy Line Link"
-                description="Generates an URL link to the current line with respect to the selected git remote">
+                description="Generates an URL link to the current line at some reasonably close commit with respect to the selected git remote. 'Reasonably close' means the current commit if it has been pushed to the remote, the closest parent commit with the remote branch that has been pushed or the closest parent with the remote default branch if no remote branch available.">
             <add-to-group group-id="CopyFileReference" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift control L"/>
             <synonym text="Create Line Link"/>
             <synonym text="Generate Line Link"/>
             <synonym text="Link Line"/>
+        </action>
+        <action id="org.lunakoly.quicklink.actions.CopyCurrentCommitLineLinkAction"
+                class="org.lunakoly.quicklink.actions.CopyCurrentCommitLineLinkAction" text="Copy Current Commit Line Link"
+                description="Generates an URL link to the current line at the currently checked out commit with respect to the selected git remote">
+            <add-to-group group-id="CopyFileReference" anchor="first"/>
+            <synonym text="Create Current Line Link"/>
+            <synonym text="Generate Current Line Link"/>
+            <synonym text="Exact Current Line"/>
+        </action>
+        <action id="org.lunakoly.quicklink.actions.CopyLatestDefaultLineLinkAction"
+                class="org.lunakoly.quicklink.actions.CopyLatestDefaultLineLinkAction" text="Copy Latest Default Line Link"
+                description="Generates an URL link to the current line at the latest default branch commit with respect to the selected git remote">
+            <add-to-group group-id="CopyFileReference" anchor="first"/>
+            <synonym text="Create Latest Default Line Link"/>
+            <synonym text="Generate Latest Default Line Link"/>
+            <synonym text="Exact Latest Default Line"/>
         </action>
     </actions>
 </idea-plugin>
