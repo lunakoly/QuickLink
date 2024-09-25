@@ -8,8 +8,8 @@ import org.lunakoly.quicklink.urlbuilder.implementations.BitbucketUrlBuilder
 import org.lunakoly.quicklink.utils.PopupException
 
 class UnsupportedUrlFormatException(domain: String) : PopupException(
-    "Only Github / Gitlab / Bitbucket URLs are supported. The selected remote link domain is: '$domain'.",
-    "Non-{Github/Gitlab/Bitbucket} URL"
+    "Only ${UrlBuilders.nameVariants} URLs are supported. The selected remote link domain is: '$domain'.",
+    "Non-${UrlBuilders.nameVariants} URL"
 )
 
 private val namesMapping by lazy {
@@ -43,5 +43,7 @@ enum class UrlBuilders(
 
             return defaultDomainsMapping[domain] ?: throw UnsupportedUrlFormatException(domain)
         }
+
+        val nameVariants: String get() = values().joinToString("/") { it.name }
     }
 }
