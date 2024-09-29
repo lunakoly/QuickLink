@@ -159,13 +159,27 @@ jobs:
       # Check out the current repository
       - name: Fetch Sources
         uses: actions/checkout@v4
+        # See: https://github.com/marketplace/actions/qodana-scan#basic-configuration
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      # Qodana Community for JVM 2024.2.2 RC complains about:
+      # > java.nio.file.NoSuchFileException: /opt/idea/plugins/sh/lib/sh.jar
+      # ...and...
+      # > Cannot find a Java installation on your machine matching this tasks requirements:
+      # > {languageVersion=11, vendor=any, implementation=vendor-specific} for LINUX on x86_64.
+      # (no idea why it's even used with `JetBrains/qodana-action@v2024.1.5`, a cache issue?)
+      # (and the error doesn't even go away!)
 
       # Set up Java environment for the next steps
+      # Qodana needs a modern Java, otherwise it'll fail with:
+      # > Dependency requires at least JVM runtime version 17. This build uses a Java 11 JVM.
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 17
+          java-version: 21
 
       # Run Qodana inspections
       - name: Qodana - Code Inspection
